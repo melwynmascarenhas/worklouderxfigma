@@ -53,4 +53,80 @@ window.addEventListener('load', () => {
     targets: shape,
     d: [{ value: initial }],
   })
+
+  const parallaxTl = gsap.timeline({
+    ease: 'none',
+    scrollTrigger: {
+      trigger: '.is-parallax-bg',
+      start: 'top bottom',
+      scrub: true,
+    },
+  })
+
+  parallaxTl
+    //.from('.contact-form', { duration: 0.4, autoAlpha: 0 }, 0.4)
+    .from('.bg-image', { duration: 4, y: '-30%' }, 0)
+})
+
+const hoverContainers = document.querySelectorAll('.flex-container')
+
+hoverContainers.forEach((container) => {
+  let img = container.querySelector('.image-thumb')
+  let info = container.querySelector('.feature')
+
+  gsap.set(img, { width: '100%', ease: 'power2.inOut' })
+  gsap.set(info, { width: '40%', ease: 'power2.inOut' }, '<')
+
+  let tl = gsap.timeline({ paused: true }) // Create a timeline for each container and pause it initially
+  tl.to(info, {
+    autoAlpha: 0,
+    duration: 0.1,
+    ease: 'none',
+  })
+  tl.to(
+    info,
+    { width: '0%', padding: '0rem', duration: 0.5, ease: 'power2.inOut' },
+    '<'
+  )
+  tl.to(img, { width: '100%', duration: 0.5, ease: 'power2.inOut' }, '<')
+  tl.to(container, { gap: '0rem', duration: 0.5, ease: 'power2.inOut' }, '<')
+  container.addEventListener('mouseover', () => {
+    tl.play() // Start the animation when mouseover event occurs
+  })
+
+  container.addEventListener('mouseout', () => {
+    tl.reverse() // Reverse the animation when mouseout event occurs
+  })
+})
+
+//SWIPER
+const bulletWrapper = document.querySelector('.swiper-bullet-wrapper')
+const bgslider = new Swiper('.swiper_gallery', {
+  slidePerView: 1,
+  slideActiveClass: 'is-active',
+  speed: 1000,
+  loop: true,
+  // loopedSlides: 8,
+  keyboard: true,
+  mousewheel: {
+    forceToAxis: true,
+  },
+  centeredSlides: true,
+  allowTouchMove: true, //click and drag to change
+  followFinger: true, //move with click and drag
+  navigation: {
+    nextEl: '.slider-next',
+    prevEl: '.slider-prev',
+  },
+  pagination: {
+    el: bulletWrapper,
+    bulletClass: 'swiper-bullet',
+    bulletActiveClass: 'is-active',
+    // bulletElement: 'button',
+    clickable: true,
+  },
+  autoplay: {
+    delay: 3000,
+    disableOnInteraction: false,
+  },
 })
