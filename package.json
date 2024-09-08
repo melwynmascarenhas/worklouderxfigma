@@ -26,6 +26,7 @@
     "animejs": "^3.2.2",
     "gsap": "^3.9.1",
     "number-flip": "^1.1.10",
-    "swiper": "^11.0.6"
+    "swiper": "^11.0.6",
+     "typewriter-effect": "^2.21.0"
   }
 }
