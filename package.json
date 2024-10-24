@@ -23,6 +23,7 @@
     "vite-plugin-eslint": "^1.3.0"
   },
   "dependencies": {
+    "lenis": "^1.0.45",
     "animejs": "^3.2.2",
     "gsap": "^3.9.1",
     "number-flip": "^1.1.10",
