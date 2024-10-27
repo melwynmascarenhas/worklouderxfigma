@@ -33,10 +33,10 @@ Swiper.use([
   Keyboard,
   Parallax,
 ])
-
+let lenis
 // Function to initialize Lenis with options and event listeners
 function initializeLenis() {
-  const lenis = new Lenis({
+  lenis = new Lenis({
     autoResize: true,
     duration: 1.2,
     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -55,8 +55,6 @@ function initializeLenis() {
 
   return lenis
 }
-
-let lenis
 function enableScrolling() {
   // Enable scrolling after the delay
   document.body.style.overflowY = 'auto'
