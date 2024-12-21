@@ -55,22 +55,12 @@ function initializeLenis() {
 
   return lenis
 }
-function enableScrolling() {
-  // Enable scrolling after the delay
-  document.body.style.overflowY = 'auto'
-
-  setTimeout(() => {
-    onDOMChange()
-  }, 250)
-}
 
 // Initialize Lenis
 //let lenis = initializeLenis()
 
 // Function to handle DOM changes, e.g., accordion expansion
 const onDOMChange = () => {
-  console.log('DOM changed')
-
   // Refresh ScrollTrigger to recalculate trigger positions
   ScrollTrigger.refresh()
 
@@ -85,16 +75,16 @@ const onDOMChange = () => {
   }, 250)
 }
 
-// Example: Attach the DOM change handler to an accordion expand event
-let dropdowns = document.querySelectorAll('.dropdown-toggle')
-
-dropdowns.forEach((dropdown) => {
-  dropdown.addEventListener('click', onDOMChange)
-})
-//////////LENIS ENDS//////
-
 window.onload = function () {
-  document.body.style.overflow = 'hidden'
+  onDOMChange()
+
+  // Example: Attach the DOM change handler to an accordion expand event
+  let dropdowns = document.querySelectorAll('.dropdown-toggle')
+
+  dropdowns.forEach((dropdown) => {
+    dropdown.addEventListener('click', onDOMChange)
+  })
+  //////////LENIS ENDS//////
 
   const preloaderTL = gsap.timeline()
   preloaderTL
@@ -118,7 +108,6 @@ window.onload = function () {
       delay: 0.2,
       duration: 1,
       ease: 'power4.inOut',
-      onComplete: enableScrolling,
     })
 }
 
