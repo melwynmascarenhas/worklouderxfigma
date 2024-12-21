@@ -164,7 +164,7 @@ window.addEventListener('load', () => {
   const parallaxTl = gsap.timeline({
     ease: 'none',
     scrollTrigger: {
-      trigger: '.is-parallax-bg',
+      trigger: '.subscribe_background-wrap',
       start: 'top bottom',
       scrub: true,
     },
@@ -172,14 +172,14 @@ window.addEventListener('load', () => {
 
   parallaxTl
     //.from('.contact-form', { duration: 0.4, autoAlpha: 0 }, 0.4)
-    .from('.bg-image', { duration: 4, y: '-30%' }, 0)
+    .from('.subscribe_background-image', { duration: 4, y: '-30%' }, 0)
 })
 
 function handleDropdowns() {
   gsap.matchMedia().add('(min-width: 992px)', () => {
     const hoverContainers = document.querySelectorAll('.flex-container')
     hoverContainers.forEach((container) => {
-      let img = container.querySelector('.image-thumb')
+      let img = container.querySelector('.feature_image-wrap')
       let info = container.querySelector('.feature')
       let content = info.querySelector('.feature-content')
 
@@ -218,7 +218,7 @@ function handleDropdowns() {
   gsap.matchMedia().add('(max-width: 991px)', () => {
     const hoverContainers = document.querySelectorAll('.flex-container')
     hoverContainers.forEach((container) => {
-      let img = container.querySelector('.image-thumb')
+      let img = container.querySelector('.feature_image-wrap')
       let info = container.querySelector('.feature')
       let content = info.querySelector('.feature-content')
       gsap.set(img, { width: '100%' })
@@ -247,7 +247,7 @@ buttons.forEach((button) => {
 })
 
 //SWIPER
-const bulletWrapper = document.querySelector('.swiper-bullet-wrapper')
+const bulletWrapper = document.querySelector('.swiper_bullet-wrapper')
 const bgslider = new Swiper('.swiper_gallery', {
   slidePerView: 1,
   slideActiveClass: 'is-active',
@@ -267,7 +267,7 @@ const bgslider = new Swiper('.swiper_gallery', {
   },
   pagination: {
     el: bulletWrapper,
-    bulletClass: 'swiper-bullet',
+    bulletClass: 'swiper_bullet',
     bulletActiveClass: 'is-active',
     // bulletElement: 'button',
     clickable: true,
